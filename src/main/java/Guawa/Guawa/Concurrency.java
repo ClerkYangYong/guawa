@@ -188,12 +188,9 @@ public class Concurrency {
         ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newCachedThreadPool());
         Long t1 = System.currentTimeMillis();
         // 任务1
-        ListenableFuture<Boolean> booleanTask = service.submit(new Callable<Boolean>() {
-            @Override
-            public Boolean call() throws Exception {
-                Thread.sleep(1000);
-                return true;
-            }
+        ListenableFuture<Boolean> booleanTask = service.submit(() -> {
+            Thread.sleep(1000);
+            return true;
         });
 
         Futures.addCallback(booleanTask, new FutureCallback<Boolean>() {
@@ -208,12 +205,9 @@ public class Concurrency {
         });
 
         // 任务2
-        ListenableFuture<String> stringTask = service.submit(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                Thread.sleep(1000);
-                return "Hello World";
-            }
+        ListenableFuture<String> stringTask = service.submit(() -> {
+            Thread.sleep(1000);
+            return "Hello World";
         });
 
         Futures.addCallback(stringTask, new FutureCallback<String>() {
@@ -235,12 +229,9 @@ public class Concurrency {
         });
 
         // 任务3
-        ListenableFuture<Integer> integerTask = service.submit(new Callable<Integer>() {
-            @Override
-            public Integer call() throws Exception {
-                Thread.sleep(1000);
-                return 10;
-            }
+        ListenableFuture<Integer> integerTask = service.submit(() -> {
+            Thread.sleep(1000);
+            return 10;
         });
 
         Futures.addCallback(integerTask, new FutureCallback<Integer>() {

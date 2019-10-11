@@ -29,7 +29,7 @@ public class StringsDeal {
         //jdk中的拆分器,会默认去掉最后面的空字符串
         String[] s = ",a,,b,".split(",");
         System.out.println(s.length);
-        Arrays.stream(s).forEach(v -> System.out.print(v));
+        Arrays.stream(s).forEach(v -> System.out.println(v));
 
         //guawa中的拆分
 
@@ -120,10 +120,10 @@ public class StringsDeal {
     }
 
     public static void main(String[] args) {
-        //stringJoier();
-        //stringPlitter();
+        stringJoier();
+        stringPlitter();
         stringCharMatcher();
-        //stringCaseFormat();
+        stringCaseFormat();
 
 
     }

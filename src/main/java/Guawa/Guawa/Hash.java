@@ -15,6 +15,7 @@ public class Hash {
     public static void main(String[] args) {
         HashFunction function_0 = Hashing.md5();
         HashFunction function_1 = Hashing.murmur3_128();
+
         Hasher hasher_0 = function_0.newHasher();
         Hasher hasher_1 = function_1.newHasher();
 
@@ -29,22 +30,13 @@ public class Hash {
                 .putString(person.getName(), Charsets.UTF_8)
                 .putString(person.getAddress(), Charsets.UTF_8)
                 .putLong(person.getPhoneNumber())
-                .putObject(person.getMale(), new Funnel<Male>() {
-                    @Override
-                    public void funnel(Male from, PrimitiveSink into) {
-                        into.putString(from.name(), Charsets.UTF_8);
-                    }
-                }).hash();
+                .putObject(person.getMale(), (Funnel<Male>) (from, into) -> into.putString(from.name(), Charsets.UTF_8)).hash();
+
         HashCode code_1 = hasher_1.putInt(person.getAge())
                 .putString(person.getName(), Charsets.UTF_8)
                 .putString(person.getAddress(), Charsets.UTF_8)
                 .putLong(person.getPhoneNumber())
-                .putObject(person.getMale(), new Funnel<Male>() {
-                    @Override
-                    public void funnel(Male from, PrimitiveSink into) {
-                        into.putString(from.name(), Charsets.UTF_8);
-                    }
-                }).hash();
+                .putObject(person.getMale(), (Funnel<Male>) (from, into) -> into.putString(from.name(), Charsets.UTF_8)).hash();
         System.out.println(code_0.asLong());
         System.out.println(code_1.asLong());
     }

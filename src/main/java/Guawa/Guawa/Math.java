@@ -39,6 +39,7 @@ public class Math {
         System.out.println("modulus(100,50): " + IntMath.mod(100, 50));
         //返回n个！，也就是说，前n个正整数的乘积，如果n==0则返回1，或者是Integer.MAX_VALUE如果结果不适合在一个int值。
         System.out.println("factorial(5): " + IntMath.factorial(5));
+
     }
 
 

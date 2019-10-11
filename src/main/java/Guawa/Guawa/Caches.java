@@ -51,6 +51,13 @@ public class Caches {
                 .build(new DemoCacheLoader());
 
         //模拟线程并发
+        try {
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println(123121);
+            cache.get(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         new Thread(() -> {
             //非线程安全的时间格式化工具
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");

@@ -24,8 +24,6 @@ public class MutiFutureTaskTest {
         param.add(3);
         param.add(4);
         List<Person> result = MutiFutureTask.batchExec(param, v -> persons.get(v));
-        System.out.println(123123);
-        System.out.println(result.size());
     }
 
 

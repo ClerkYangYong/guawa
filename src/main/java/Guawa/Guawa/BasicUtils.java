@@ -2,10 +2,12 @@ package Guawa.Guawa;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Optional;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -62,7 +64,7 @@ public class BasicUtils {
        /* public void login (String userName, String password){
             Preconditions.checkArgument(!(StringUtils.isEmpty(userName) || StringUtils.isEmpty(password)), "用户名或密码不能为空");
             User user = userService.queryUserByUserNameAndPassword(userName, password);
-            Preconditions.checkNotNull(user, "用户名或密码错误");
+            Preconditions.checkNotNull(user, "dingdan {}",orderon);
         }*/
 
 
@@ -88,7 +90,8 @@ public class BasicUtils {
      */
     public static void useComparator() {
 
-        List<Integer> listtest = Lists.newArrayList();
+        List<Integer> a = new ArrayList<>();
+        List<Integer> listtest = Lists.newArrayListWithCapacity(10);
         listtest.add(1);
         listtest.add(1);
         listtest.add(1);
@@ -139,9 +142,9 @@ public class BasicUtils {
         //min返回集合中最小的元素
         System.out.println("13:min:" + natural.min(cba));
         //返回指定的第k个可迭代的最小的元素，按照这个从最小到最大的顺序。
-        System.out.println("14:leastOf:" + natural.leastOf(cba, 3));
+        System.out.println("14:leastOf:" + natural.leastOf(cba, 12));
         //返回指定的第k个可迭代的最大的元素，按照这个从最大到最小的顺序。
-        System.out.println("15:greatestOf:" + natural.leastOf(cba, 3));
+        System.out.println("15:greatestOf:" + natural.leastOf(cba, 2));
 
 
         List<String> list = Lists.newArrayList();
@@ -161,6 +164,7 @@ public class BasicUtils {
         System.out.println("20:isOrdered list :" + naturalOrdering.isOrdered(list));
         System.out.println("21:isOrdered list :" + naturalOrdering.reverse().isOrdered(list));
         list.add(null);
+        list.add(null);
         System.out.println("22: add null list:" + list);
         //null往前放
         System.out.println("23:nullsFirst list :" + naturalOrdering.nullsFirst().sortedCopy(list));
@@ -178,7 +182,7 @@ public class BasicUtils {
 
 
     public static void main(String arge[]) {
-        useOptional();
+        //useOptional();
         //useAndEludeNull();
         //usePrecondition();
         //useObjectMethod();
